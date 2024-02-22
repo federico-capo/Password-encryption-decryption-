@@ -65,7 +65,7 @@ root.geometry("410x150")
 root.configure(bg='#141212')
 
 # Etichetta per il risultato
-result_label = Label(root, text="", bg='#141212', fg='white')
+result_label = Label(root, text="", bg='#141212', fg='#ffffff',font=("Arial", 9,'bold') )
 result_label.grid(row=4, column=0, columnspan=3)
 
 # #genera chiave
