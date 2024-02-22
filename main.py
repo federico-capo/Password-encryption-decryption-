@@ -63,6 +63,7 @@ root = Tk()
 root.title("Cifratura/Decifratura File")
 root.geometry("410x150")
 root.configure(bg='#141212')
+root.resizable(width=False, height=False)
 
 # Etichetta per il risultato
 result_label = Label(root, text="", bg='#141212', fg='#ffffff',font=("Arial", 9,'bold') )
