@@ -16,17 +16,17 @@ def load_key(filename):
 def get_key_choice():
     key_choice = simpledialog.askstring("Scelta chiave", "Vuoi generare una nuova chiave o utilizzare una già esistente? (si/no): ").lower()
     if key_choice == 'si':
-        return generate_key()
+        return generate_key(),
     elif key_choice == 'no':
         key_filename = filedialog.askopenfilename(title="Seleziona il file chiave")
         if os.path.exists(key_filename):
-            return load_key(key_filename), key_filename
+            return load_key(key_filename),
         else:
             print(f"Il file chiave '{key_filename}' non esiste. Generazione di una nuova chiave.")
-            return generate_key(), None
+            return generate_key(),
     else:
         print("Scelta non valida. Generazione di una nuova chiave.")
-        return generate_key(), None
+        return generate_key(),
 
 def encrypt_file(key, filename, output_filename, result_label):
     cipher = Fernet(key)
@@ -48,11 +48,13 @@ def decrypt_file(key, filename, output_filename, result_label):
 
 def main():
     key_filename = 'secret.key'
-    key, existing_key_filename = get_key_choice()
+    key_result = get_key_choice()
 
-    if existing_key_filename is not None:
+    if len(key_result) == 2:
+        key, existing_key_filename = key_result
         key_filename = existing_key_filename
     else:
+        key, existing_key_filename = key_result[0], None
         save_key(key, key_filename)
         print("Chiave pronta.")
 
